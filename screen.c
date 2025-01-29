@@ -206,21 +206,11 @@ void load(linked_triangle* list, camera* obj, screen* load_screen) {  // 3D -> 2
             printf("triangle[%d]\n", a);
             a++;
         #endif
-        // get vector which is parallel to the screen
-        double ratio0 = dot_product(current -> pos[0], obj -> direction) / current -> p0_magnitude;
-        double ratio1 = dot_product(current -> v1, obj -> direction) / current -> v1_magnitude;
-        double ratio2 = dot_product(current -> v2, obj -> direction) / current -> v2_magnitude;
-        vector p0, v1, v2;  // 3D position & vector parallel to screen
-        for (int i = 0; i < 3; i++) {
-            p0[i] = current -> pos[0][i] - obj -> direction[i] * ratio0;  // 3D position 0 parallel to screen
-            v1[i] = current -> v1[i] - obj -> direction[i] * ratio1;  // 3D vector 1 parallel to screen
-            v2[i] = current -> v2[i] - obj -> direction[i] * ratio2;  // 3D vector 2 parallel to screen
-        }
         // get vector on the screen coordinate
         vector2_int screen_p0, screen_v1, screen_v2;  // 2D position & vector on screen
-        world2screen(p0, obj, screen_p0);  // 2D position 0 on screen
-        world2screen(v1, obj, screen_v1);  // 2D vector 1 on screen
-        world2screen(v2, obj, screen_v2);  // 2D vector 2 on screen
+        world2screen(current -> pos[0], obj, screen_p0);  // 2D position 0 on screen
+        world2screen(current -> v1, obj, screen_v1);  // 2D vector 1 on screen
+        world2screen(current -> v2, obj, screen_v2);  // 2D vector 2 on screen
         // move the origin point of the screen coordinate to the lower left corner
         screen_p0[0] += load_screen -> width / 2;
         screen_p0[1] += load_screen -> height / 2;
@@ -252,5 +242,6 @@ void show(screen* load_screen) {  // put load onto screen
     #endif
     for (int y = load_screen -> height - 1; y >= 0 ; y--) {
         printf("%s\n", load_screen -> ground[y]);
+        // for (char *c = load_screen -> ground[y]; *c != '\0'; c++) putchar(*c);
     }
 }
