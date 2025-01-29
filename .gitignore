@@ -37,9 +37,6 @@
 *.x86_64
 *.hex
 
-*.bat
-*.lnk
-
 # Debug files
 *.dSYM/
 *.su
