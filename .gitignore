@@ -1,3 +1,4 @@
+# ================================== C ==================================
 # Prerequisites
 *.d
 
@@ -53,6 +54,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+
+# ================================== else ==================================
+# link
+*.lnk
+
+# vscode
+*.code-workspace
+.vscode/
 
 # Video
 *.mp4
