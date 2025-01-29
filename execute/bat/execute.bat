@@ -1,0 +1,2 @@
+.\..\..\fill.exe
+pause
